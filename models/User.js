@@ -35,6 +35,10 @@ const userSchema = new Schema(
     city: {
         type: String,
         required: [true, 'City is required.']
+    },
+    location: { 
+      type: { type: String }, 
+      coordinates: [Number],
     }
   },
   {
@@ -42,4 +46,5 @@ const userSchema = new Schema(
   }
 );
 
+userSchema.index({ location: '2dsphere' });
 module.exports = model('User', userSchema);
