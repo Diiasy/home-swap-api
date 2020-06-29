@@ -1,6 +1,6 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require("mongoose");
 
-const userSchema = new Schema(
+const userSchema = new mongoose.Schema(
   {
     username: {
       type: String,
@@ -25,21 +25,20 @@ const userSchema = new Schema(
       trim: true,
       required: [true, 'Name is required.'],
     },
-    // profileImage: {
-    //   type: String,
-    //   required: [true, 'Profile image is required.']
-    // },
-    // profileImagePath: {
-    //   type: String
-    // },
+    homeName: {
+      type: String,
+      trim: true
+    },
     city: {
-        type: String,
-        required: [true, 'City is required.']
+      type: String,
+      trim: true,
+      required: [true, 'City is required.']
     },
     location: { 
       type: { type: String }, 
       coordinates: [Number],
-    }
+    },
+    pictures: [{ type: mongoose.Schema.ObjectId, ref: "Picture" }]
   },
   {
     timestamps: true
@@ -47,4 +46,4 @@ const userSchema = new Schema(
 );
 
 userSchema.index({ location: '2dsphere' });
-module.exports = model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);
