@@ -36,7 +36,7 @@ app.post('/', (req, res, next) => {
       coordinates: responseLocation.coordinates
     }
   })
-  .then((location)=>{
+  .then((geometry)=>{
       bcryptjs
       .genSalt(saltRounds)
       .then(salt => bcryptjs.hash(password, salt))
@@ -46,7 +46,7 @@ app.post('/', (req, res, next) => {
           email,
           city,
           name,
-          location,
+          geometry,
           passwordHash: hashedPassword
         //   profileImage,
         //   profileImagePath
