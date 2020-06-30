@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Picture = require("./Picture");
 
 const userSchema = new mongoose.Schema(
   {

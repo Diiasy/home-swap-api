@@ -9,7 +9,6 @@ const mongoose = require('mongoose');
 const axios = require('axios');
 
 
-// app.post('/', uploadCloudUsers.single("picture"),(req, res, next) => {
 app.post('/', (req, res, next) => {
   const { username, email, name, password, city} = req.body;
 
@@ -48,12 +47,9 @@ app.post('/', (req, res, next) => {
           name,
           geometry,
           passwordHash: hashedPassword
-        //   profileImage,
-        //   profileImagePath
         });
       })
       .then(userFromDB => {
-        // console.log('Newly created user is: ', userFromDB);
         res.json(userFromDB);
       })
       .catch(error => {

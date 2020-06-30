@@ -11,7 +11,7 @@ app.get("/:id", (req, res) => {
           res.json(user);
     })
   .catch((err) => {
-    console.log("Error",err);
+    res.status(500).json({message: err.message});
   });
 });
 
