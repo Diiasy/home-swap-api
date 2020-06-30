@@ -60,12 +60,16 @@ var indexRouter = require('./routes/index');
 var signupRouter = require('./routes/users/signup');
 var loginRouter = require('./routes/users/login');
 var logoutRouter = require('./routes/users/logout');
+var listUsersRouter = require('./routes/users/list');
 var profileRouter = require('./routes/users/profile');
+var editProfileRouter = require('./routes/users/edit-profile');
 
 app.use('/', indexRouter);
 app.use('/user/signup', signupRouter);
 app.use('/user/login', loginRouter);
 app.use('/user/logout', logoutRouter);
+app.use('/user/profile', listUsersRouter);
 app.use('/user/profile', profileRouter);
+app.use('/user/profile', editProfileRouter);
 
 module.exports = app;

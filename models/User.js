@@ -34,6 +34,10 @@ const userSchema = new mongoose.Schema(
       trim: true,
       required: [true, 'City is required.']
     },
+    homeDescription: {
+      type: String,
+      trim: true
+    },
     location: { 
       type: { type: String }, 
       coordinates: [Number],
