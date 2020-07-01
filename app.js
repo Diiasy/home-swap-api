@@ -75,5 +75,4 @@ app.use('/user/profile', profileRouter);
 app.use('/user/profile', editProfileRouter);
 app.use('/user/profile', availabilityRouter);
 
-
 module.exports = app;
