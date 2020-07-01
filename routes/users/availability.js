@@ -1,12 +1,9 @@
 const express = require("express");
 const app = express();
 const User = require("../../models/User.js");
-// const uploadCloud = require('../../config/cloudinary.js');
 const mongoose = require('mongoose');
 
-// app.post('/:id/edit', uploadCloud.array("pictures"),(req, res, next) => {
 app.post('/:id/availabilty', (req, res, next) => {
-    debugger;
     let userId = req.params.id;
     let availability  = Object.values(req.body);
 
