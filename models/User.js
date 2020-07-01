@@ -43,7 +43,13 @@ const userSchema = new mongoose.Schema(
       type: { type: String }, 
       coordinates: [Number],
     },
-    pictures: [{ type: mongoose.Schema.ObjectId, ref: "Picture" }]
+    pictures: [{ 
+      type: mongoose.Schema.ObjectId, 
+      ref: "Picture" 
+    }],
+    availability: [{
+      type: Date
+    }]
   },
   {
     timestamps: true
