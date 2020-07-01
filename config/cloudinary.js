@@ -8,7 +8,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET
 });
 
-var storage = new CloudinaryStorage({
+var storageHouse = new CloudinaryStorage({
   cloudinary: cloudinary,
   params:{
     folder: 'uploads/home-swap', // The name of the folder in cloudinary
@@ -16,6 +16,6 @@ var storage = new CloudinaryStorage({
   }
 });
 
-const uploadCloud = multer({ storage });
+const uploadCloud = multer({ storage : storageHouse });
 
 module.exports = uploadCloud;

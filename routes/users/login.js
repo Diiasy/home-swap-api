@@ -20,8 +20,6 @@ app.post('/', (req, res, next) => {
             return;
         } else if (bcryptjs.compareSync(password, user.passwordHash)) {
             req.session.user = user;
-            req.session.buyer = true;
-            req.session.seller = false;
             res.json(user);
         } else {
             res.status(401).json({ errorMessage: 'Incorrect password.' });

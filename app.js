@@ -63,6 +63,7 @@ var logoutRouter = require('./routes/users/logout');
 var listUsersRouter = require('./routes/users/list');
 var profileRouter = require('./routes/users/profile');
 var editProfileRouter = require('./routes/users/edit-profile');
+var lalalaRouter = require('./routes/users/upload-picture');
 
 app.use('/', indexRouter);
 app.use('/user/signup', signupRouter);
@@ -71,5 +72,6 @@ app.use('/user/logout', logoutRouter);
 app.use('/user/profile', listUsersRouter);
 app.use('/user/profile', profileRouter);
 app.use('/user/profile', editProfileRouter);
+app.use('/', lalalaRouter);
 
 module.exports = app;
