@@ -53,7 +53,4 @@ app.post('/:id/removeavailabilty', (req, res, next) => {
   });
 });
 
-  
-
-
 module.exports = app;

@@ -6,7 +6,6 @@ app.get('/', (req, res) => {
         if(err) console.log(err);
         res.json({ message: 'We hope to see you soon' })
     });
-   
 });
 
 module.exports = app;

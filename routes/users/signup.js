@@ -8,10 +8,8 @@ const mongoose = require('mongoose');
 
 const axios = require('axios');
 
-
 app.post('/', (req, res, next) => {
   const { username, email, name, password, city} = req.body;
-
 
   if (!username || !email || !password || !city ||!name) {
     res.status(400).json({ errorMessage: 'All fields are mandatory. Please provide your username, email and password.' });
