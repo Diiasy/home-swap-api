@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema({
   score: { type: Number, min: 0, max: 10, required: true, default: 10 },
-  content: { type: String, required: true },
+  content: { type: String },
   reviewer: { type: mongoose.Schema.ObjectId, ref: "User" },
   reviewed: { type: mongoose.Schema.ObjectId, ref: "User" }
 });

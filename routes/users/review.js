@@ -26,6 +26,20 @@ app.post('/create', (req, res) => {
     });
 });
 
+app.get('/', (req, res) => {
+    let userId = req.params.id;
+    Review.find({reviewed: userId})
+        .populate("reviewer")
+        .populate("reviewed")
+    .then((reviews) => {
+        res.json(reviews);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+
 
 module.exports = app;
 
