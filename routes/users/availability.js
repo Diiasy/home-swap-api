@@ -29,8 +29,6 @@ app.post('/:id/availabilty', (req, res, next) => {
 });
 
 app.post('/:id/removeavailabilty', (req, res, next) => {
-  debugger
-
   let userId = req.params.id;
   let availability  = Object.values(req.body);
 
