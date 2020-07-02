@@ -1,21 +1,26 @@
 const express = require('express');
 const app = express();
 const Review = require("../../models/Review");
+const User = require("../../models/User.js");
+
 
 app.post('/create', (req, res) => {
-    const reviewer = req.session.user._id;
-    const review = req.body.review;
+    const reviewer = req.body.user_id;
+    const content = req.body.content;
     const score = req.body.score;
-    const reviewed = req.query.profile_id;
+    const reviewed = req.body.profile_id;
     Review.create({
         reviewer,
-        review,
+        content,
         score,
         reviewed
     })
-    .then(newReview => {
-        res.json(newReview);
-    })
+    .then(() => {
+        User.findById(reviewed)
+          .then(userFromDB => {
+            res.json(userFromDB);
+          });
+      })
     .catch((error) => {
       console.log(error);
     });
