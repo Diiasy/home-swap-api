@@ -30,13 +30,13 @@ function insertPicturesIntoDB(req,res, next){
     })
   }
 
-  Promise.all(createPicturesPromises)
-    .then(()=> {
-      next();
-    })
-    .catch((err)=> {
-      res.status(500).json({message: err});
-    })
+Promise.all(createPicturesPromises)
+  .then(()=> {
+    next();
+  })
+  .catch((err)=> {
+    res.status(500).json({message: err});
+  })
 }
 
 function removeImageFromCloudinary(public_id,error){
