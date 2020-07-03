@@ -57,14 +57,16 @@ function protectMiddleWare(req,res,next){
 }
 
 var indexRouter = require('./routes/index');
-var signupRouter = require('./routes/users/signup');
-var loginRouter = require('./routes/users/login');
-var logoutRouter = require('./routes/users/logout');
+var signupRouter = require('./routes/auth/signup');
+var loginRouter = require('./routes/auth/login');
+var logoutRouter = require('./routes/auth/logout');
 var listUsersRouter = require('./routes/users/list');
 var profileRouter = require('./routes/users/profile');
 var editProfileRouter = require('./routes/users/edit-profile');
 var availabilityRouter = require('./routes/users/availability');
-var reviewRouter = require('./routes/users/review');
+var reviewRouter = require('./routes/reviews/review');
+var conversationRouter = require('./routes/conversation/conversation');
+var sendMessageRouter = require('./routes/conversation/send-message');
 
 app.use('/', indexRouter);
 app.use('/user/signup', signupRouter);
@@ -74,6 +76,8 @@ app.use('/user/profile', listUsersRouter);
 app.use('/user/profile', profileRouter);
 app.use('/user/profile', editProfileRouter);
 app.use('/user/profile', availabilityRouter);
-app.use('/user/review', reviewRouter);
+app.use('/user/profile', reviewRouter);
+app.use('/user/send-message', conversationRouter);
+app.use('/user/send-message', sendMessageRouter);
 
 module.exports = app;

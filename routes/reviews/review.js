@@ -25,7 +25,7 @@ app.post('/create', (req, res) => {
   });
 });
 
-app.get('/', (req, res) => {
+app.get('/:id/review', (req, res) => {
     let userId = req.params.id;
     Review.find({reviewed: userId})
         .populate("reviewer")

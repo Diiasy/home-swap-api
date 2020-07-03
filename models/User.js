@@ -49,6 +49,10 @@ const userSchema = new mongoose.Schema(
     }],
     availability: [{
       type: Date
+    }],
+    conversation: [{ 
+      type: mongoose.Schema.ObjectId, 
+      ref: "Conversation" 
     }]
   },
   {
