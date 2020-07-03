@@ -4,6 +4,7 @@ const Review = require("../../models/Review.js");
 const User = require("../../models/User.js");
 
 app.post('/create', (req, res) => {
+  // const reviewer = req.session.user._id;
   const reviewer = req.body.user_id;
   const content = req.body.content;
   const score = req.body.score;
@@ -14,28 +15,16 @@ app.post('/create', (req, res) => {
     score,
     reviewed
   })
-  .then(() => {
-      User.findById(reviewed)
-        .then(userFromDB => {
-          res.json(userFromDB);
-        });
+  .then((review) => {
+    Review.find({_id: review.id})
+        .populate("reviewer")
+    .then((review) => {
+        res.json(review);
     })
+  })
   .catch((error) => {
     console.log(error);
   });
-});
-
-app.get('/', (req, res) => {
-    let userId = req.params.id;
-    Review.find({reviewed: userId})
-        .populate("reviewer")
-        .populate("reviewed")
-    .then((reviews) => {
-        res.json(reviews);
-    })
-    .catch((error) => {
-        console.log(error);
-    });
 });
 
 module.exports = app;

@@ -7,7 +7,6 @@ const uploadCloud = require('../../config/cloudinary.js');
 
 app.post('/:userId/edit', uploadCloud.array("pictures"), insertPicturesIntoDB, (req, res, next) => {
     let userId = req.params.userId;
-
     User.findByIdAndUpdate(userId, req.body, {new: true})
     .populate("pictures")
     .then((user) => res.json(user))
