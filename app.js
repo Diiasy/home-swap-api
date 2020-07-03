@@ -65,8 +65,9 @@ var profileRouter = require('./routes/users/profile');
 var editProfileRouter = require('./routes/users/edit-profile');
 var availabilityRouter = require('./routes/users/availability');
 var reviewRouter = require('./routes/reviews/review');
+var addReviewRouter = require('./routes/reviews/add-review');
 var conversationRouter = require('./routes/conversation/conversation');
-var sendMessageRouter = require('./routes/conversation/send-message');
+var messageRouter = require('./routes/conversation/message');
 
 app.use('/', indexRouter);
 app.use('/user/signup', signupRouter);
@@ -77,7 +78,8 @@ app.use('/user/profile', profileRouter);
 app.use('/user/profile', editProfileRouter);
 app.use('/user/profile', availabilityRouter);
 app.use('/user/profile', reviewRouter);
-app.use('/user/send-message', conversationRouter);
-app.use('/user/send-message', sendMessageRouter);
+app.use('/user/review', addReviewRouter);
+app.use('/conversation', conversationRouter);
+app.use('/message', messageRouter);
 
 module.exports = app;
