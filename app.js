@@ -69,6 +69,7 @@ var reviewRouter = require('./routes/reviews/review');
 var addReviewRouter = require('./routes/reviews/add-review');
 var conversationRouter = require('./routes/conversation/conversation');
 var messageRouter = require('./routes/conversation/message');
+var searchRouter = require('./routes/users/search');
 
 app.use('/', indexRouter);
 app.use('/user/signup', signupRouter);
@@ -83,5 +84,7 @@ app.use('/user/profile', reviewRouter);
 app.use('/user/review', addReviewRouter);
 app.use('/conversation', conversationRouter);
 app.use('/message', messageRouter);
+app.use('/user/search', searchRouter);
+
 
 module.exports = app;
