@@ -48,11 +48,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Protect Middleware
 function protectMiddleWare(req,res,next){
-    console.log("Protect Middleware called");
+    // console.log("Protect Middleware called");
     if(req.session.user){
         next();
     } else {
-        res.redirect("/users/login");
+        res.status(401).json({message: 'Please login to view this content'});
     }
 }
 
@@ -76,15 +76,14 @@ app.use('/user/signup', signupRouter);
 app.use('/user/login', loginRouter);
 app.use('/user/logout', logoutRouter);
 app.use('/user/profile', listUsersRouter);
-app.use('/user/profile', profileRouter);
-app.use('/user/profile', editProfileRouter);
-app.use('/user/profile', deletePictureRouter);
-app.use('/user/profile', availabilityRouter);
-app.use('/user/profile', reviewRouter);
-app.use('/user/review', addReviewRouter);
-app.use('/conversation', conversationRouter);
-app.use('/message', messageRouter);
+app.use('/user/profile', protectMiddleWare, profileRouter);
+app.use('/user/profile', protectMiddleWare, editProfileRouter);
+app.use('/user/profile', protectMiddleWare, deletePictureRouter);
+app.use('/user/profile', protectMiddleWare, availabilityRouter);
+app.use('/user/profile', protectMiddleWare, reviewRouter);
+app.use('/user/review', protectMiddleWare, addReviewRouter);
+app.use('/conversation', protectMiddleWare, conversationRouter);
+app.use('/message', protectMiddleWare, messageRouter);
 app.use('/user/search', searchRouter);
-
 
 module.exports = app;

@@ -6,7 +6,7 @@ const bcryptjs = require('bcryptjs');
 app.post('/', (req, res, next) => {
     const { email, username, password } = req.body;
 
-    if ((email == null && username == null) || password == null) {
+    if ((email === '' && username === '') || password === '') {
         console.log(email, username, password)
         res.status(401).json({ errorMessage: 'Please enter both, email/username and password to login.' });
         return;
