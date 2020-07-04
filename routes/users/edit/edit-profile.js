@@ -1,9 +1,9 @@
 const express = require("express");
 const app = express();
-const User = require("../../models/User.js");
-const Picture = require("../../models/Picture.js");
+const User = require("../../../models/User.js");
+const Picture = require("../../../models/Picture.js");
 const mongoose = require('mongoose');
-const uploadCloud = require('../../config/cloudinary.js');
+const uploadCloud = require('../../../config/cloudinary.js');
 
 app.post('/:userId/edit', uploadCloud.array("pictures"), insertPicturesIntoDB, (req, res, next) => {
     let userId = req.params.userId;
@@ -14,7 +14,6 @@ app.post('/:userId/edit', uploadCloud.array("pictures"), insertPicturesIntoDB, (
 });
 
 function insertPicturesIntoDB(req,res, next){
-  debugger
   let createPicturesPromises = [];
   if (req.files){
     req.files.forEach(file => {
@@ -37,12 +36,6 @@ Promise.all(createPicturesPromises)
   .catch((err)=> {
     res.status(500).json({message: err});
   })
-}
-
-function removeImageFromCloudinary(public_id,error){
-    return uploadCloud
-    .destroy(public_id)
-    .then(()=> error)
 }
 
 module.exports = app;

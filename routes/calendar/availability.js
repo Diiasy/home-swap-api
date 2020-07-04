@@ -10,7 +10,6 @@ app.post('/:id/availabilty', (req, res, next) => {
     User.update(
         { _id: userId},
         { $push: {availability: { $each: availability }} },
-
     )
     .then(() => {
       User.findById(userId)
