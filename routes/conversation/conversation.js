@@ -22,7 +22,6 @@ app.post('/create/:recipientId', (req, res) => {
     .then(conversation => {
         if(conversation){
             return conversation;
-            // redirect to message page on front-end that fetches messages from /message/list/:conversationId
         } else {
             return Conversation.create({
                 participants: [req.params.recipientId, req.session.user._id]
@@ -31,7 +30,6 @@ app.post('/create/:recipientId', (req, res) => {
     })
     .then (conversation => {
         res.json(conversation.id);
-        // redirect to message page on front-end that fetches messages from /message/list/:conversationId
     })
     .catch(err => console.log(err))
 })

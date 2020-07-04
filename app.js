@@ -48,7 +48,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Protect Middleware
 function protectMiddleWare(req,res,next){
-    // console.log("Protect Middleware called");
     if(req.session.user){
         next();
     } else {

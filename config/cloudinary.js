@@ -11,7 +11,7 @@ cloudinary.config({
 var storageHouse = new CloudinaryStorage({
   cloudinary: cloudinary,
   params:{
-    folder: 'uploads/home-swap', // The name of the folder in cloudinary
+    folder: 'uploads/home-swap',
     allowedFormats: ['jpg', 'png']
   }
 });

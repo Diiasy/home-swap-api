@@ -3,7 +3,6 @@ const app = express();
 const User = require("../../models/User.js");
 const bcryptjs = require('bcryptjs');
 const saltRounds = 10;
-// const uploadCloudUsers = require('../../config/cloudinary.js');
 const mongoose = require('mongoose');
 
 const axios = require('axios');
