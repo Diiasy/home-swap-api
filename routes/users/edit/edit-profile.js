@@ -20,7 +20,8 @@ function insertPicturesIntoDB(req,res, next){
       createPicturesPromises.push(
         Picture.create({
           name: file.originalname,
-          path: file.path
+          path: file.path,
+          picture_id: file.filename
         })
       .then(picture => {
           return User.findByIdAndUpdate(req.params.userId, { $push: { pictures: picture.id } });
