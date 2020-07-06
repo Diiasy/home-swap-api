@@ -2,9 +2,7 @@ const express = require("express");
 const app = express();
 const User = require("../../../models/User.js");
 const Picture = require("../../../models/Picture.js");
-const mongoose = require('mongoose');
 const uploadCloud = require('../../../config/cloudinary.js');
-const { response } = require("../../index.js");
 
 app.get('/:userId/edit/delete/:pictureId', (req, res, next) => {
     let userId = req.params.userId;
@@ -27,8 +25,9 @@ app.get('/:userId/edit/delete/:pictureId', (req, res, next) => {
 
 function removeImageFromCloudinary(public_id, error){
     return uploadCloud.storage.cloudinary.uploader
-    .destroy(public_id.path)
-    .then(()=> console.log(error))
+    .destroy(public_id.picture_id,(error, result)=> {
+        console.log(error)
+    })
 }
 
 module.exports = app;

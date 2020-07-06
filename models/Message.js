@@ -14,6 +14,10 @@ const messageSchema = new Schema({
         type: mongoose.Schema.ObjectId, 
         ref: "Conversation" 
     }]
-});
+},
+    {
+      timestamps: true
+    }
+);
 
 module.exports = mongoose.model('Message', messageSchema);;

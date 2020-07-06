@@ -4,7 +4,6 @@ const User = require("../../models/User.js");
 
 app.get("/:id", (req, res) => {
   let userId = req.params.id;
-  
   User.findById(userId)
   .populate("pictures")
     .then((user) => {
