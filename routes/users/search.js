@@ -7,6 +7,7 @@ app.get('/', (req, res) => {
     User.find(
         { $text: { $search: searchTerm } }
     )
+    .populate("pictures")
     .then(properties => {
         res.json(properties);
     })
@@ -14,5 +15,7 @@ app.get('/', (req, res) => {
         console.log("Err",err);
     });
 });
+
+
 
 module.exports = app;
