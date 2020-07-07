@@ -12,7 +12,7 @@ app.get('/my-conversations', (req, res) => {
         })
         res.json(participants);
     })
-    .catch(err => console.log(err))
+    .catch(err => res.json(err))
 })
 
 app.post('/create/:recipientId', (req, res) => {
@@ -31,7 +31,7 @@ app.post('/create/:recipientId', (req, res) => {
     .then (conversation => {
         res.json(conversation.id);
     })
-    .catch(err => console.log(err))
+    .catch(err => res.json(err))
 })
 
 module.exports = app;

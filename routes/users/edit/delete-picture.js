@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const User = require("../../../models/User.js");
 const Picture = require("../../../models/Picture.js");
-const uploadCloud = require('../../../config/cloudinary.js');
+const removeImageFromCloudinary = require("../../../middleware/removeImageFromCloudinary");
 
 app.get('/:userId/edit/delete/:pictureId', (req, res, next) => {
     let userId = req.params.userId;
@@ -10,6 +10,7 @@ app.get('/:userId/edit/delete/:pictureId', (req, res, next) => {
     User.findByIdAndUpdate(userId, req.body, {new: true})
     Picture.findById(pictureId)
     .then(picture => {
+        debugger
         return removeImageFromCloudinary(picture)
         .then(response => {
             return picture.remove();
@@ -22,12 +23,5 @@ app.get('/:userId/edit/delete/:pictureId', (req, res, next) => {
         return res.status(500).json({message: error})
     })
 });
-
-function removeImageFromCloudinary(public_id, error){
-    return uploadCloud.storage.cloudinary.uploader
-    .destroy(public_id.picture_id,(error, result)=> {
-        console.log(error)
-    })
-}
 
 module.exports = app;
