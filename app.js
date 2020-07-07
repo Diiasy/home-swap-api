@@ -20,6 +20,8 @@ app.use(bodyParser.json());
 var session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
+var indexRouter = require('./routes/index');
+app.use('/', indexRouter);
 
 app.use(session({
     secret: process.env.secret,
@@ -48,17 +50,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Protect Middleware
 function protectMiddleWare(req,res,next){
-    debugger
     if(req.session.user){
-        debugger
         next();
     } else {
-        debugger
         res.status(401).json({message: 'Please login to view this content'});
     }
 }
 
-var indexRouter = require('./routes/index');
 var signupRouter = require('./routes/auth/signup');
 var loginRouter = require('./routes/auth/login');
 var logoutRouter = require('./routes/auth/logout');
@@ -74,7 +72,6 @@ var messageRouter = require('./routes/conversation/message');
 var searchRouter = require('./routes/users/search');
 
 app.use('/user/profile', protectMiddleWare)
-app.use('/', indexRouter);
 app.use('/user/signup', signupRouter);
 app.use('/user/login', loginRouter);
 app.use('/user/logout', logoutRouter);

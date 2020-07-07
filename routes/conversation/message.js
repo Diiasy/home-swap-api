@@ -3,7 +3,6 @@ const app = express();
 const Message = require("../../models/Message.js");
 
 app.post('/create/:conversationId', (req, res) => {
-    debugger
     Message.create(
         {from: req.session.user._id, message: req.body.message, conversationId: req.params.conversationId}
     )

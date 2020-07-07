@@ -7,7 +7,7 @@ app.get("/:id", (req, res) => {
   User.findById(userId)
   .populate("pictures")
     .then((user) => {
-          res.json(user);
+        res.json(user);
     })
   .catch((err) => {
     res.status(500).json({message: err.message});
