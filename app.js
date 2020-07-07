@@ -72,7 +72,7 @@ var conversationRouter = require('./routes/conversation/conversation');
 var messageRouter = require('./routes/conversation/message');
 var searchRouter = require('./routes/users/search');
 
-app.use('/user/profile', protectMiddleWare)
+app.use('/user/profile', protectMiddleWare);
 app.use('/user/signup', signupRouter);
 app.use('/user/login', loginRouter);
 app.use('/user/logout', logoutRouter);
