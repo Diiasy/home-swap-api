@@ -10,7 +10,7 @@ var app = express();
 
 var cors = require('cors');
 app.use(cors({
-    origin: true, //put the site address to make it more safe ["url"]
+    origin: [process.env.client_origin_a, process.env.client_origin_b],
     credentials: true
 }));
 
