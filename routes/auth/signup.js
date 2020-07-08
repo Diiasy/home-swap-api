@@ -43,6 +43,7 @@ app.post('/', (req, res, next) => {
           city,
           name,
           geometry,
+          address,
           passwordHash: hashedPassword
         });
       })

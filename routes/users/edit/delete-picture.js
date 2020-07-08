@@ -10,7 +10,6 @@ app.get('/:userId/edit/delete/:pictureId', (req, res, next) => {
     User.findByIdAndUpdate(userId, req.body, {new: true})
     Picture.findById(pictureId)
     .then(picture => {
-        debugger
         return removeImageFromCloudinary(picture)
         .then(response => {
             return picture.remove();

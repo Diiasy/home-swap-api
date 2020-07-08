@@ -74,7 +74,6 @@ var searchRouter = require('./routes/users/search');
 var favoriteRouter = require('./routes/favorite/favorite');
 var addToFavoriteRouter = require('./routes/favorite/add-favorite');
 var removeFromFavoriteRouter = require('./routes/favorite/delete-favorite');
-var editAddressRouter = require('./routes/users/edit/edit-address');
 
 app.use('/user/profile', protectMiddleWare)
 app.use('/user/favorite', protectMiddleWare)
@@ -85,7 +84,6 @@ app.use('/user/list', listUsersRouter);
 app.use('/user/profile', profileRouter);
 app.use('/user/profile', deleteProfileRouter);
 app.use('/user/profile', editProfileRouter);
-app.use('/user/profile', editAddressRouter);
 app.use('/user/profile', deletePictureRouter);
 app.use('/user/profile', availabilityRouter);
 app.use('/user/profile', reviewRouter);
