@@ -71,6 +71,8 @@ var addReviewRouter = require('./routes/reviews/add-review');
 var conversationRouter = require('./routes/conversation/conversation');
 var messageRouter = require('./routes/conversation/message');
 var searchRouter = require('./routes/users/search');
+var editAddressRouter = require('./routes/users/edit/edit-address');
+
 
 app.use('/user/profile', protectMiddleWare);
 app.use('/user/signup', signupRouter);
@@ -80,6 +82,7 @@ app.use('/user/list', listUsersRouter);
 app.use('/user/profile', profileRouter);
 app.use('/user/profile', deleteProfileRouter);
 app.use('/user/profile', editProfileRouter);
+app.use('/user/profile', editAddressRouter);
 app.use('/user/profile', deletePictureRouter);
 app.use('/user/profile', availabilityRouter);
 app.use('/user/profile', reviewRouter);
