@@ -28,7 +28,8 @@ app.get('/:userId/delete', (req, res, next) => {
 .then(user => req.sessions.destroy())
     .then(user=> res.json(user))
     .catch(err => {
-        res.json({ errorMessage: 'Sorry, something went wrong.' })})
+        res.json({ errorMessage: 'Sorry, something went wrong.' })
+    })
 })
 
 module.exports = app;

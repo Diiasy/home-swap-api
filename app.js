@@ -71,8 +71,12 @@ var addReviewRouter = require('./routes/reviews/add-review');
 var conversationRouter = require('./routes/conversation/conversation');
 var messageRouter = require('./routes/conversation/message');
 var searchRouter = require('./routes/users/search');
+var favoriteRouter = require('./routes/favorite/favorite');
+var addToFavoriteRouter = require('./routes/favorite/add-favorite');
+var removeFromFavoriteRouter = require('./routes/favorite/delete-favorite');
 
 app.use('/user/profile', protectMiddleWare)
+app.use('/user/favorite', protectMiddleWare)
 app.use('/user/signup', signupRouter);
 app.use('/user/login', loginRouter);
 app.use('/user/logout', logoutRouter);
@@ -87,5 +91,8 @@ app.use('/user/review', protectMiddleWare, addReviewRouter);
 app.use('/conversation', protectMiddleWare, conversationRouter);
 app.use('/message', protectMiddleWare, messageRouter);
 app.use('/user/search', searchRouter);
+app.use('/user/favorite', favoriteRouter);
+app.use('/user/favorite', addToFavoriteRouter);
+app.use('/user/favorite', removeFromFavoriteRouter);
 
 module.exports = app;
