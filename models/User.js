@@ -40,7 +40,10 @@ const userSchema = new mongoose.Schema(
       trim: true
     },
     geometry: { 
-      type: { type: String }, 
+      type: {       
+        type: String, // Don't do `{ location: { type: String } }`
+        enum: ['Point'] 
+      }, 
       coordinates: [Number],
     },
     pictures: [{ 
@@ -61,5 +64,8 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.index({'$**': 'text'});
-userSchema.index({ location: '2dsphere' });
+userSchema.index({ geometry: '2dsphere' });
+// db.userSchema.dropIndexes();
+// db.userSchema.createIndex({geometry:"2dsphere"});
+
 module.exports = mongoose.model('User', userSchema);
