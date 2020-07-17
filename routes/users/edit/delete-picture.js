@@ -7,7 +7,8 @@ const removeImageFromCloudinary = require("../../../middleware/removeImageFromCl
 app.get('/:userId/edit/delete/:pictureId', (req, res, next) => {
     let userId = req.params.userId;
     let pictureId = req.params.pictureId;
-    User.findByIdAndUpdate(userId, req.body, {new: true})
+    User.findByIdAndUpdate(userId, { $pull: { pictures: pictureId } }, {new: true})
+    .then(()=>
     Picture.findById(pictureId)
     .then(picture => {
         return removeImageFromCloudinary(picture)
@@ -18,6 +19,8 @@ app.get('/:userId/edit/delete/:pictureId', (req, res, next) => {
     .then((picture) => {
         return res.json(picture)
     })
+    )
+    
     .catch(error => {
         return res.status(500).json({message: error})
     })
